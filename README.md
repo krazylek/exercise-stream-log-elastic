@@ -53,6 +53,12 @@ Display only logs in terminal:
 ls -l | tail -n+2 | node index.js 2>&1 >/dev/null
 ```
 
+Other idea: log filen writen as well as elasticsearch (for backups?)
+
+```bash
+ls -l | tail -n+2 | node index.js 2> >(tee -a report.log | ./node_modules/.bin/pino-elasticsearch)
+```
+
 
 Note the `tail -n+2` to remove the *ls -l total files* (which is not parsed here).
 

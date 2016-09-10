@@ -33,7 +33,7 @@ function createLogger(opts) {
   if(opts.nolog)
     return pino({ level: 'silent' });
 
-  const logSink = argv.output == 'elastic' ? require('./logger-elastic') :
+  const logSink = argv.output == 'elastic' ? require('./logger-elastic')(argv) :
     process.stderr;
   return pino(logSink);
 }
