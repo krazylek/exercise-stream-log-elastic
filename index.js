@@ -35,7 +35,7 @@ function createLogger(opts) {
 
   const logSink = argv.output == 'elastic' ? require('./logger-elastic')(argv) :
     process.stderr;
-  return pino(logSink);
+  return pino({}, logSink);
 }
 
 function createMonitoredStream(stream) {
